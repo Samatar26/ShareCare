@@ -12,7 +12,11 @@ injectGlobal`
   }
   body {
    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-   background-color: #222222;
+   max-width: 80em;
+   margin: 0 auto;
+  }
+  body > * + * {
+    margin-top: 1.5em;
   }
   ul {
     list-style-type: none;
