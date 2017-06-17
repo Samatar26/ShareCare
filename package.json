@@ -8,6 +8,7 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "redux": "^3.7.0",
+    "redux-form": "^6.8.0",
     "styled-components": "^2.1.0"
   },
   "devDependencies": {
@@ -21,7 +22,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "collectCoverageFrom":[
+  "collectCoverageFrom": [
     "src/**/*.js",
     "!**/src/index.js",
     "!**/node_modules/**"

@@ -18,7 +18,7 @@ class HomePage extends Component {
         <Header>
           <HeaderBrand>ShareCare</HeaderBrand>
           <HeaderOption to="/signin">Sign in</HeaderOption>
-          <HeaderOption to="/singup">Sign up</HeaderOption>
+          <HeaderOption to="/signup">Sign up</HeaderOption>
         </Header>
         <Introduction>
           CareBnB is a programme that matches people who want help or
