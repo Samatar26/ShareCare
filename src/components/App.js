@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HeaderComponent from './../container/Header';
 import HomePage from './../views/HomePage';
 import SigninPage from './../views/SigninPage';
+import SignoutPage from './../views/SingOutPage';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           <HeaderComponent />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signin" component={SigninPage} />
+          <Route exact path="/signout" component={SignoutPage} />
         </div>
       </Router>
     );
