@@ -4,6 +4,18 @@ import { connect } from 'react-redux';
 import * as actions from './../actions/index';
 
 class SignupForm extends Component {
+  handleError = () => {
+    if (this.props.errorMessage) {
+      return (
+        <div>
+          <span>Oops {this.props.errorMessage}</span>
+        </div>
+      );
+    }
+  };
+  onSubmit = ({ email, password }) => {
+    this.props.signupUser({ email, password }, this.props.history);
+  };
   renderField = field => {
     const { meta: { touched, error } } = field;
     console.log(error);
@@ -14,13 +26,10 @@ class SignupForm extends Component {
       </label>
     );
   };
-  onSubmit = ({ email, password, confirm_password }) => {
-    console.log(email, password, confirm_password);
-  };
 
   render() {
     const { handleSubmit } = this.props;
-
+    console.log(this.props);
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <Field
@@ -41,7 +50,7 @@ class SignupForm extends Component {
           inputType="password"
           component={this.renderField}
         />
-        {/* {this.handleError()} */}
+        {this.handleError()}
         <button action="submit">Sign in</button>
       </form>
     );
@@ -50,6 +59,10 @@ class SignupForm extends Component {
 
 function validate(values) {
   const errors = {};
+  ['email', 'password', 'confirm_password'].forEach(value => {
+    if (!values[value]) errors[value] = `Please enter a ${value}`;
+  });
+
   if (values.password !== values.confirm_password) {
     errors.confirm_password = 'The Passwords must match';
   }
@@ -57,7 +70,11 @@ function validate(values) {
   return errors;
 }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error };
+}
+
 export default reduxForm({
   validate,
   form: 'signup',
-})(connect()(SignupForm));
+})(connect(mapStateToProps, actions)(SignupForm));

@@ -3,7 +3,7 @@ import SignupForm from './../container/SignupForm';
 
 class SignupPage extends Component {
   render() {
-    return <SignupForm />;
+    return <SignupForm history={this.props.history} />;
   }
 }
 

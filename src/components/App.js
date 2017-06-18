@@ -5,6 +5,7 @@ import HomePage from './../views/HomePage';
 import SigninPage from './../views/SigninPage';
 import SignoutPage from './../views/SingOutPage';
 import SignupPage from './../views/SignupPage';
+import SearchPage from './../views/SearchPage';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/signin" component={SigninPage} />
           <Route exact path="/signout" component={SignoutPage} />
           <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/searchresults" component={SearchPage} />
         </div>
       </Router>
     );

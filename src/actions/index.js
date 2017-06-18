@@ -33,10 +33,33 @@ export function signinUser({ email, password }, history) {
         } else {
           localforage.setItem('token', data.token);
           dispatch({ type: AUTH_USER });
-          history.push('/feature');
+          history.push('/searchresults');
         }
       })
-      .catch(err => dispatch(authError('Network Problem sorry!')));
+      .catch(err => dispatch(authError('There was a network problem sorry!')));
+  };
+}
+
+export function signupUser({ email, password }, history) {
+  return function(dispatch) {
+    fetch(`${ROOT_URL}/signup`, {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          return dispatch(authError('User already exists'));
+        } else {
+          localforage.setItem('token', data.token);
+          dispatch({ type: AUTH_USER });
+          history.push('/searchresults');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(authError('There was a network problem sorry!'));
+      });
   };
 }
 
