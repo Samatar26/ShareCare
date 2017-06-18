@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Signout } from './../container/Signout';
+import Signout from './../container/Signout';
 
 class SingOutPage extends Component {
   render() {

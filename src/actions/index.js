@@ -1,5 +1,5 @@
 import localforage from 'localforage';
-import { AUTH_USER, AUTH_ERROR } from './Types';
+import { AUTH_USER, AUTH_ERROR, FORBID_USER } from './Types';
 const ROOT_URL = 'http://localhost:4000';
 
 export function signinUser({ email, password }, history) {
@@ -44,5 +44,18 @@ export function authError(error) {
   return {
     type: AUTH_ERROR,
     payload: error,
+  };
+}
+
+export function signoutUser() {
+  return function(dispatch) {
+    localforage
+      .removeItem('token')
+      .then(() => {
+        dispatch({
+          type: FORBID_USER,
+        });
+      })
+      .catch(err => console.log(err));
   };
 }

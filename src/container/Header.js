@@ -6,7 +6,7 @@ import * as action from './../actions/index.js';
 class HeaderComponent extends Component {
   renderLinks = () => {
     if (this.props.authenticated) {
-      return <HeaderOption to="/singout">Sign out</HeaderOption>;
+      return <HeaderOption to="/signout">Sign out</HeaderOption>;
     } else {
       return [
         <HeaderOption key={1} to="/signin">Sign in</HeaderOption>,
