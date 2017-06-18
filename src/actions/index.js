@@ -1,4 +1,4 @@
-import { AUTH_USER } from './types';
+import { AUTH_USER } from './Types';
 const ROOT_URL = 'http://localhost:4000';
 
 export function signinUser({ email, password }, history) {
