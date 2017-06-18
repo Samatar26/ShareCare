@@ -31,9 +31,10 @@ export function signinUser({ email, password }, history) {
               return dispatch(authError("Sorry, the user doesn't exist!"));
           }
         } else {
-          localforage.setItem('token', data.token);
-          dispatch({ type: AUTH_USER });
-          history.push('/searchresults');
+          localforage.setItem('token', data.token).then(keySet => {
+            dispatch({ type: AUTH_USER });
+            history.push('/searchresults');
+          });
         }
       })
       .catch(err => dispatch(authError('There was a network problem sorry!')));
@@ -51,9 +52,10 @@ export function signupUser({ email, password }, history) {
         if (data.error) {
           return dispatch(authError('User already exists'));
         } else {
-          localforage.setItem('token', data.token);
-          dispatch({ type: AUTH_USER });
-          history.push('/searchresults');
+          localforage.setItem('token', data.token).then(keySet => {
+            dispatch({ type: AUTH_USER });
+            history.push('/searchresults');
+          });
         }
       })
       .catch(err => {
