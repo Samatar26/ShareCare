@@ -1,5 +1,5 @@
 import localforage from 'localforage';
-import { AUTH_USER, AUTH_ERROR, FORBID_USER } from './Types';
+import { AUTH_USER, AUTH_ERROR, FORBID_USER, FETCH_HOMEOWNERS } from './Types';
 const ROOT_URL = 'http://localhost:4000';
 
 export function signinUser({ email, password }, history) {
@@ -80,5 +80,22 @@ export function signoutUser() {
         });
       })
       .catch(err => console.log(err));
+  };
+}
+
+export function fetchHomeOwners() {
+  return function(dispatch) {
+    localforage.getItem('token').then(key => {
+      console.log(key, 'dada');
+      fetch(ROOT_URL, {
+        method: 'GET',
+        headers: {
+          Authorization: key,
+        },
+      })
+        .then(response => response.json())
+        .then(data => dispatch({ type: FETCH_HOMEOWNERS, payload: data }))
+        .catch(err => console.log(err));
+    });
   };
 }
