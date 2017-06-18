@@ -13,19 +13,23 @@ export function signinUser({ email, password }, history) {
       .then(res => res.json())
       .then(data => {
         if (data.error) {
+          console.log(data.error === 'bcrypt error', data.error);
           switch (data.error) {
             case 'database error':
-              return authError(
-                'Sorry, there was a problem connecting to the database!'
+              return dispatch(
+                authError(
+                  'Sorry, there was a problem connecting to the database!'
+                )
               );
-            case 'bcrypt':
-              return authError(
-                'Sorry, there was a problem checking your password!'
+            case 'bcrypt error':
+              return dispatch(
+                authError('Sorry, there was a problem checking your password!')
               );
+            case 'wrong password':
+              return dispatch(authError('Sorry, you entered a wrong password'));
             case 'User not found':
-              return authError("Sorry, the user doesn't exist!");
+              return dispatch(authError("Sorry, the user doesn't exist!"));
           }
-          return;
         } else {
           localforage.setItem('token', data.token);
           dispatch({ type: AUTH_USER });
