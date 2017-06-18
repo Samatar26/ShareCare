@@ -13,7 +13,8 @@ class SigninPage extends Component {
   };
 
   onSubmit = ({ email, password }) => {
-    this.props.signinUser({ email, password });
+    console.log(this.props);
+    this.props.signinUser({ email, password }, this.props.history);
   };
   render() {
     const { handleSubmit } = this.props;
