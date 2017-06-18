@@ -18,7 +18,6 @@ class SignupForm extends Component {
   };
   renderField = field => {
     const { meta: { touched, error } } = field;
-    console.log(error);
     return (
       <label>
         {field.label}<input type={field.inputType} {...field.input} />
@@ -29,7 +28,6 @@ class SignupForm extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    console.log(this.props);
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <Field
@@ -66,7 +64,6 @@ function validate(values) {
   if (values.password !== values.confirm_password) {
     errors.confirm_password = 'The Passwords must match';
   }
-  console.log(errors);
   return errors;
 }
 

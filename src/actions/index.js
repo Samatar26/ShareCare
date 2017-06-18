@@ -88,7 +88,6 @@ export function signoutUser() {
 export function fetchHomeOwners() {
   return function(dispatch) {
     localforage.getItem('token').then(key => {
-      console.log(key, 'dada');
       fetch(ROOT_URL, {
         method: 'GET',
         headers: {
