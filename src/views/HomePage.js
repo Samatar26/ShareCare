@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Header,
-  HeaderBrand,
-  HeaderOption,
   UserOptions,
   UserOption,
   UserTitle,
@@ -15,11 +12,6 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <Header>
-          <HeaderBrand>ShareCare</HeaderBrand>
-          <HeaderOption to="/signin">Sign in</HeaderOption>
-          <HeaderOption to="/signup">Sign up</HeaderOption>
-        </Header>
         <Introduction>
           CareBnB is a programme that matches people who want help or
           support around the house with people who need accomodation and are
